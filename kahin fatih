@@ -1,0 +1,36 @@
+import tkinter as tk
+
+def aklimi_oku():
+    try:
+        sayi = int(entry.get())
+        if 1 <= sayi <= 10:
+            result_window = tk.Toplevel(root)
+            result_window.title("Sonuç")
+            result_label = tk.Label(result_window, text='Kahin Fatih Düşünüyor...', font=("Arial", 16))
+            result_label.pack(padx=20, pady=20)
+            
+            result_window.after(4000, lambda: result_label.config(text=f'Seçtiğin sayı: {sayi}'))
+        else:
+            label_sonuc.config(text='Lütfen 1 ile 10 arasında bir sayı girin.')
+    except ValueError:
+        label_sonuc.config(text='Lütfen geçerli bir sayı girin.')
+
+root = tk.Tk()
+root.title("Aklımı Oku")
+
+label = tk.Label(root, text='1 ile 10 arasında bir sayı seç:')
+label.pack()
+
+entry = tk.Entry(root)
+entry.pack()
+
+button = tk.Button(root, text='Fatih aklını okusun', command=aklimi_oku)
+button.pack()
+
+label_sonuc = tk.Label(root, text='')
+label_sonuc.pack()
+
+label_yapimci = tk.Label(root, text='Yapımcı: Fatih', font=("Arial", 10))
+label_yapimci.pack(side=tk.BOTTOM, pady=10)
+
+root.mainloop()
